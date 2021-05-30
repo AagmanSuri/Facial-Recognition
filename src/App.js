@@ -76,7 +76,7 @@ class App extends Component {
       <Logo/>
       <Rank/>
       <ImageLinkForm OnInputChange={this.OnInputChange} OnButtonSubmit={this.OnButtonSubmit}/>
-      <FaceRecognation ImageUrl={this.state.ImageUrl}/>
+      <FaceRecognation box={this.state.box} ImageUrl={this.state.ImageUrl}/>
     </div>
   );
   }
