@@ -29,10 +29,27 @@ class App extends Component {
     this.state={
       input:'',
       ImageUrl:'',
+      box:{}
     }
   }
+  calculateFaceLocation = (data) =>{
+    const clarifaiFace =  data.outputs[0].data.regions[0].region_info.bounding_box;
+    const image =  document.getElementById("inputimage")
+    const width = Number(image.width);
+    const height= Number(image.height);
+    return{
+      leftCol:clarifaiFace.left_col * width,
+      topRow: clarifaiFace.top_row * height,
+      rightCol:width-(clarifaiFace.right_col*width),
+      bottomRow:height-(clarifaiFace.bottom_row * height)
+    }
+  }
+  displayfaceBox = (box)=>{
+    console.log(box)
+    this.setState({box:box});
+  }
 
-  OnInputChange=(event)=>{
+   OnInputChange=(event)=>{
     this.setState({input:event.target.value})
     console.log('input',event.target.value);
   }
@@ -43,16 +60,11 @@ class App extends Component {
       app.models
       .predict(
       Clarifai.FACE_DETECT_MODEL,
-      // THE JPG
-      // "https://i.insider.com/5d321d4ea209d3146d650b4a?width=1100&format=jpeg&auto=webp"
       this.state.input
       )
-      .then((response) => {
-      console.log(response.outputs[0].data.regions[0].region_info.bounding_box);
-      console.log(response.outputs[0].data.regions[0].region_info.bounding_box.top_row);
-      })
-      .catch((err) => {
-      console.log(err);
+      .then((response) => this.displayfaceBox(this.calculateFaceLocation(response)))
+      .catch((err) => {console.log(err);
+      
       });
   }
 
