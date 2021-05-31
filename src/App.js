@@ -7,7 +7,7 @@ import React, { Component } from 'react';
 import Particles from 'react-particles-js';
 import Clarifai from 'clarifai';
 import FaceRecognation from './components/FaceRecognation/FaceRecognation'
-
+import Signin from './components/Signin/Signin'
 const app = new Clarifai.App({
   apiKey: "3fab0a59e7624e5ca3dd8f14484a5dab",
  });
@@ -77,6 +77,7 @@ class App extends Component {
       <Rank/>
       <ImageLinkForm OnInputChange={this.OnInputChange} OnButtonSubmit={this.OnButtonSubmit}/>
       <FaceRecognation box={this.state.box} ImageUrl={this.state.ImageUrl}/>
+      <Signin/>
     </div>
   );
   }
