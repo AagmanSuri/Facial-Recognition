@@ -5,7 +5,7 @@ const FaceRecognition = ({ ImageUrl, box }) => {
     return (
         <div className='center ma' >
             <div className='absolute mt2' >
-                <img id='inputimage' src={ImageUrl} alt='FacesGoHere' width='500px' height='auto' />
+                <img id='inputimage' src={ImageUrl} alt='' width='500px' height='auto' />
                 <div className="bounding-box" style={{ top:box.topRow , right: box.rightCol, bottom: box.bottomRow, left: box.leftCol  }}>
                 </div>
             </div>    
@@ -13,4 +13,4 @@ const FaceRecognition = ({ ImageUrl, box }) => {
     )
 }
  
-export default FaceRecognition
+export default FaceRecognition;
