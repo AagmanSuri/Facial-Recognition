@@ -13,8 +13,6 @@ const app = new Clarifai.App({
   apiKey: "3fab0a59e7624e5ca3dd8f14484a5dab",
  });
 
- 
-
 const particlesOption={
   particles: {
       number:{
@@ -36,11 +34,6 @@ class App extends Component {
       route:'signin',
       isSignedIn:false
     }
-  }
-  componentDidMount(){
-    fetch('http://localhost:3000/')
-    .then(response=>response.json())
-    .then(console.log)
   }
 
   calculateFaceLocation = (data) =>{
