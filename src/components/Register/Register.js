@@ -1,5 +1,26 @@
-import React from 'react'
-const Register =({onRouteChange})=>{
+import React,{Component} from 'react';
+
+class Register extends Component{
+    constructor(props){
+        super(props);
+        this.state={
+            email:'',
+            password:'',
+            name:''
+        }
+    }
+
+onNamechange = (event) =>{
+    this.setState({name : event.target.value})
+}
+onEmailchange = (event) =>{
+    this.setState({email : event.target.value})
+}
+onPasswordchange = (event) =>{
+this.setState({password : event.target.value})
+} 
+render(){
+    const {onRouteChange} = this.props
     return (
         <article className="mw5 center  br3 pa3 pa4-ns mv3 mw6  shadow-5 ba b--black-10"> 
         <main className="pa4 black-80">
@@ -29,5 +50,6 @@ const Register =({onRouteChange})=>{
         </main>
         </article>
     );
+}   
 }
 export default Register;
